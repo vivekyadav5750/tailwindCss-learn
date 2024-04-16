@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+.compontentafter{
+   text-align: center;
+}
+/* .loginbtn{
+    @apply bg-gray-700 rounded-md text-white w-24 px-2 py-1 hover:bg-white hover:text-black   active:bg-gray-200 font-semibold
+} */
+@tailwind utilities;
+
+@layer components{
+    .loginbtn{
+        @apply bg-gray-700 rounded-md text-white w-24 px-2 py-1 hover:bg-white hover:text-black   active:bg-gray-200 font-semibold
+    }
+}
