@@ -1,0 +1,167 @@
+npm install -D tailwindcss
+npx tailwindcss init
+npm i vite
+
+"scripts":{
+    "start": "vite"
+},
+:- npm run start
+
+justify-end         (make nav list in right side)
+justify-between     (make items left and right)
+justify-arround     (space-arround) (main-class) (to set item and make space betweens them)
+
+items-center
+
+tracking-widest     (represent word in expland way -- letter space)
+tracking-tight      (represent word in compress way )
+
+hover:text-black-900
+hover:bg-blue-800
+active:                                 (click)
+focus:outline-red-800                   (tab)
+
+flex
+grid grid-col-4
+
+font-bold
+font-extrabold
+font-mono
+bg-purple-900
+text-white
+rounded-2xl
+text-6xl
+text-lg
+text-yellow-500
+
+h-12
+w-12
+w-2/3
+
+space-x-11          space-between       (control child elements) (make space between nav list elements )
+space-y-11
+-space-x-5          (negative values)
+-mx-5               (negative values)
+px-3                (X mean horizontally left and right padding)
+py-2                (Y mean vertically top and bottom padding)
+pt-2                (t : top, b : bottom, l : left, r : right)
+
+border, border-2    (width), border-green-400
+divide-width-x-4    (control border width between elements)
+
+SQUARE BRACKET NOTATION  --  (manually data can be given by help of square bracket)
+my-[67px]         
+my-[3e] 
+w-[30vw] 
+
+content               -- (control of the before and after pseudo-elements)
+after:ml-0.5
+before:block before:absolute before:-inset-1
+
+RESPONSIVE Design       -: start from small to large screen
+sm : 640px ke baad (break down)
+md : 768px
+lg : 1024px
+xl : 1280px
+2xl : 1536px
+
+=======================================================================================================
+pay cost of use them (not must good at readability of code)
+
+@apply directive     (use one class name instead of many class name)
+.btn{
+    @appy bg-gray-700 rounded-md text-white w-24 px-2 py-1 hover:bg-white hover:text-black ml-48
+}
+-> use after coponents (mention sequence of code )
+
+----------------------------------------------------------------------------------------------------
+@layer directive        (use to write code at end of utilites ...by giving proper info of layer)
+@layer utilites or @layer components
+    .btn{
+        @appy bg-gray-700 rounded-md text-white w-24 px-2 py-1
+    }
+
+@layer components
+.coponentsafter{
+    text-align:center;
+}
+
+Example: 1
+
+@tailwind base;
+@tailwind components;
+.loginbtn{
+    @apply bg-gray-700 rounded-md text-white w-24 px-2 py-1 hover:bg-white hover:text-black   active:bg-gray-200 font-semibold
+}
+@tailwind utilities;
+
+Example 2:
+
+@tailwind base;
+@tailwind components;
+.compontentafter{
+   text-align: center;
+}
+@tailwind utilities;
+
+@layer components{
+    .loginbtn{
+        @apply bg-gray-700 rounded-md text-white w-24 px-2 py-1 hover:bg-white hover:text-black   active:bg-gray-200 font-semibold
+    }
+}
+
+======================================================================================================
+changes in tailwind.config.js
+
+-> to make own class elements, like there is not mx-9, we can create it by own.
+-> always write inside extend, so that it will extend that object not overwrite, but in some case like screen resolution we have to write inside theme but not extend, reason is :- sequence of code
+->  complete configuration file that includes all of Tailwind’s default configuration 
+    npx tailwindcss init congvivek --full
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["*"],
+  theme: {
+    extend: {
+    },
+  },
+  plugins: [],
+}
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["*"],
+  theme: {
+    screens: {
+      xs: '375px',    // by own 
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
+    extend: {
+      space:{
+        13: '3.25rem',
+      },
+      fontSize:{
+        '10xl': ['9rem', { lineHeight: '1.2' }],
+      }
+    },
+  },
+  plugins: [],
+}
+
+
+====================================================================
+Build For Production
+
+"scripts":{
+    "start": "vite",
+    "build": "vite build"
+  },
+
+-> npm run build
+-> it create dist folder ,which contain index.html and css file ( a complete project ), and we can upload / host it anywhere.
+
